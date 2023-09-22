@@ -1,0 +1,56 @@
+body, select, option, input {
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+}
+
+body {
+    background-color: #666;
+}
+
+.form, .output {
+    position: absolute;
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+}
+
+label {
+    display: inline-block;
+    color: #ff0;
+    width: 100px;
+    margin-left: 20px;
+}
+
+label.transfertime {
+    width: 200px;
+}
+
+select {
+    background-color: #ff0;
+    color: #000;
+    padding: 20px;
+    margin: 20px;
+}
+
+input.time {
+    background-color: #ff0;
+    color: #000;
+    padding: 20px;
+    width: 80px;
+}
+
+input.number {
+    background-color: #ff0;
+    color: #000;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 85px;
+    width: 180px;
+}
+
+.output {
+    background-color: #ff0;
+    top: 0;
+    left: 50%;
+}
