@@ -1,0 +1,47 @@
+<!DOCTYPE html> <!-- HAVE TO MAKE SURE FROMTIME IS TIME AND TOTIME IS REPLACED BY FROM/TO OPTION -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/styleyannick.css">
+  <title>Blindway</title>
+</head>
+<body>
+<form class="form" id="form">
+  <label for="from">Van: </label>
+  <select name="from" class="input stations from fromstation" id="from">
+    <option value="" disabled selected>--STATION--</option>
+    <option value="Amf">Amersfoort</option>
+    <option value="Ht">Den Bosch</option>
+    <option value="Hlm">Haarlem</option>
+  </select>
+  <input type="time" name="time" class="input time" id="time">
+
+  <br />
+
+  <label for="to">Naar: </label>
+  <select name="to" class="input stations to tostation" id="to">
+    <option value="" disabled selected>--STATION--</option>
+    <option value="Amf">Amersfoort</option>
+    <option value="Ht">Den Bosch</option>
+    <option value="Hlm">Haarlem</option>
+  </select>
+  <select name="fromto" class="input fromto" id="fromto">
+    <option value="from" selected>Van</option>
+    <option value="to">Naar</option>
+  </select>
+
+  <br />
+
+  <label for="transfertime" class="transfertime">Overstaptijd: </label>
+  <input type="number" name="transfertime" class="input number minutes transfertime" id="transfertime">
+</form>
+
+<div class="output">
+  <div class="outputtext">
+
+  </div>
+</div>
+<script src="/js/planner_controller.js"></script>
+</body>
+</html>
