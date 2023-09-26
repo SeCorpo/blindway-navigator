@@ -9,16 +9,7 @@ class Build {
         this.transferTime = transferTime;
 
         this.routeFound = [];
-
-        this.buildRoute()
-            .catch(error => {
-                console.error('Error building route:', error);
-            });
-        // if(this.routeFound.length > 0) {
-        //     console.log(('build - constructor: number of rows in routeFound' + this.routeFound.length))
-        // } else {
-        //     console.error('build - constructor: routeFound is empty')
-        // }
+        this.routeString = 'Vul alle velden in';
     }
 
 
@@ -42,7 +33,7 @@ class Build {
                             if(this.findNext_search_station(row2) === this.end_station_name_journey) {
                                 this.routeFound.push(row, row2);
                             } else {
-                                console.error('build - buildRoute: no train_track found from second station within an hour');
+                                console.error('in=build: no train_track found from second station within an hour');
 
                                 //tree train_tracks deep
                                 const search3 = new Search(this.findNext_search_station(row2), this.findNext_search_start_time(row2));
@@ -53,27 +44,28 @@ class Build {
                                         if(this.findNext_search_station(row3) === this.end_station_name_journey) {
                                             this.routeFound.push(row, row2, row3);
                                         } else{
-                                            console.error('build - buildRoute: no train_track found from third station within an hour\n' +
+                                            console.error('in=build: : no train_track found from third station within an hour\n' +
                                                 'cannot build a route from more than 3 separate train_tracks');
                                         }
                                     }
                                 } else {
-                                    console.error('build - buildRoute: no train_track found from third station within an hour');
+                                    console.error('in=build: no train_track found from third station within an hour');
                                 }
                             }
                         }
                     } else {
-                        console.error('build - buildRoute: no train_track found from second station within an hour');
+                        console.error('in=build: no train_track found from second station within an hour');
                     }
                 }
             } else {
-                console.error('build - buildRoute: cannot find a route from given station at given time');
+                console.error('in=build: cannot find a route from given station at given time');
             }
 
-            console.log(('build - constructor: number of rows in routeFound' + this.routeFound.length));
-            this.printAllRows(this.routeFound);
+            console.log(('in=build: number of rows in routeFound ' + this.routeFound.length));
+            this.routeString = this.getRouteAsString();
         } catch(error) {
-            console.error('Build - cannot build route ', error);
+            console.error('in=build: cannot build route ', error);
+            this.routeString = 'in=build: Error building route: ' + error;
         }
     }
     findNext_search_station(row) {
@@ -88,24 +80,38 @@ class Build {
         return next_start_time;
     }
 
-    printAllRows(routeFound) {
-        routeFound.forEach((row, index) => {
-            console.log('Track: ', index + 1);
-            console.log('track_id:', row.track_id);
-            console.log('start_station_name:', row.start_station_name);
-            console.log('end_station_name:', row.end_station_name);
-            console.log('timeOfDeparture:', row.timeOfDeparture);
-            console.log('timeOfArrival:', row.timeOfArrival);
-            console.log('departurePlatform:', row.departurePlatform);
-            console.log('arrivalPlatform:', row.arrivalPlatform);
-            console.log('------------------');
+    getRouteAsString() {
+        let result = '';
+
+        this.routeFound.forEach((row, index) => {
+            result += 'Track: ' + (index + 1) + '\n';
+            result += 'track_id: ' + row.track_id + '\n';
+            result += 'start_station_name: ' + row.start_station_name + '\n';
+            result += 'end_station_name: ' + row.end_station_name + '\n';
+            result += 'timeOfDeparture: ' + row.timeOfDeparture + '\n';
+            result += 'timeOfArrival: ' + row.timeOfArrival + '\n';
+            result += 'departurePlatform: ' + row.departurePlatform + '\n';
+            result += 'arrivalPlatform: ' + row.arrivalPlatform + '\n';
+            result += '------------------\n';
         });
+
+        return result;
     }
+
+    // printAllRows(routeFound) {
+    //     routeFound.forEach((row, index) => {
+    //         console.log('Track: ', index + 1);
+    //         console.log('track_id:', row.track_id);
+    //         console.log('start_station_name:', row.start_station_name);
+    //         console.log('end_station_name:', row.end_station_name);
+    //         console.log('timeOfDeparture:', row.timeOfDeparture);
+    //         console.log('timeOfArrival:', row.timeOfArrival);
+    //         console.log('departurePlatform:', row.departurePlatform);
+    //         console.log('arrivalPlatform:', row.arrivalPlatform);
+    //         console.log('------------------');
+    //     });
+    // }
 }
-
-
-
-
 module.exports = Build;
 
 

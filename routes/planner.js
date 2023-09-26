@@ -10,7 +10,6 @@ router.get('/',  (req, res) => {
     res.sendFile(filePath);
 });
 
-    //const buildInstance = new Build('Haarlem', 'Den Bosch', '2023-09-22 12:00:00', 0);
 
 
 
