@@ -1,4 +1,4 @@
-import Build from "../../ov_engine/build";
+const Build = require("../../ov_engine/build");
 
 class plannerController {
     constructor() {
@@ -62,7 +62,7 @@ class plannerController {
             this.time,
             this.transferTime
         );
-        outputtext.innerHTML = buildInstance.routeString;
+        this.outputtext.innerHTML = buildInstance.routeString;
 
     }
 }

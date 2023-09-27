@@ -10,6 +10,11 @@ class Build {
 
         this.routeFound = [];
         this.routeString = 'Vul alle velden in';
+
+        this.buildRoute()
+            .catch(error => {
+                console.error('Error building route:', error);
+            });
     }
 
 
