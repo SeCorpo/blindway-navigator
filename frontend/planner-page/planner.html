@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>blindway</title>
+</head>
+<body>
+<div class="grid-container">
+  <div class="grid-item">Location buttons
+
+    <div class="location-row">
+      <div class="location-column">
+        <button type="button" class="locationbtn fromlocation" name="fromAmersfoort">
+          Amersfoort
+        </button>
+        <button type="button" class="locationbtn fromlocation" name="fromDenBosch">
+          Den Bosch
+        </button>
+        <button type="button" class="locationbtn fromlocation" name="fromHaarlem">
+          Haarlem
+        </button>
+      </div>
+      <div class="location-column">
+        <button type="button" class="locationbtn tolocation" name="toAmersfoort">
+          Amersfoort
+        </button>
+        <button type="button" class="locationbtn tolocation" name="toDenBosch">
+          Den Bosch
+        </button>
+        <button type="button" class="locationbtn tolocation" name="toHaarlem">
+          Haarlem
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="grid-item">Time planner
+    <div class="clock-and-button">
+      <div class="clock">
+        <input type="time" name="time" value="12:00"/>
+      </div>
+      <div class="now-button">
+        <button type="button" class="now-button" id="nowButton">Nu</button>
+      </div>
+    </div>
+    <div class="transfertime-slider-container">
+      <input type="range" class="transfertime-slider" name="transfertime" value="20" min="0" max="60"/>
+      <span class="transfertime-value">20</span>
+    </div>
+  </div>
+  <div class="grid-item">Plan button
+    <button type="button" class="plan-btn" id="planButton">Plan Reis</button>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
