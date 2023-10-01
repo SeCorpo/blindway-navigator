@@ -11,94 +11,73 @@ const planButton = document.getElementById("planButton");
 
 fromButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        // Remove "selected" class from all "from" buttons
         fromButtons.forEach((btn) => {
             btn.classList.remove("selected");
         });
 
-        // Add "selected" class to the clicked "from" button
         button.classList.add("selected");
     });
 });
 
 toButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        // Remove "selected" class from all "to" buttons
         toButtons.forEach((btn) => {
             btn.classList.remove("selected");
         });
 
-        // Add "selected" class to the clicked "to" button
         button.classList.add("selected");
     });
 });
 
 nowButton.addEventListener("click", function() {
-    // Toggle the "selected" class on the button
     nowButton.classList.toggle("selected");
 });
-
-valueDisplay.textContent = slider.value;
-slider.addEventListener("input", () => {
-    valueDisplay.textContent = slider.value;
-});
-// Add a click event listener to the button
-planButton.addEventListener("click", handleButtonClick);
-
-function handleButtonClick() {
-    // Get the selected "from" location
-    const selectedFromLocation = document.querySelector(".fromlocation.selected");
-
-    // Get the selected "to" location
-    const selectedToLocation = document.querySelector(".tolocation.selected");
-
-    // Get the time input value
-    let selectedTime;
-
+function getTime() {
     if (document.getElementById("nowButton").classList.contains("selected")) {
-        // If "Now" button is selected, use the current date and time
-        const now = new Date();
-        selectedTime = now.toISOString(); // Format as ISO string
+        return new Date();
     } else {
-        // If "Now" button is not selected, use the time input value
+
         const timeInputValue = document.getElementById("timeInput").value;
-        // Parse the time input value as a Date object (assuming it's in HH:mm format)
         const [hours, minutes] = timeInputValue.split(":");
         const selectedDate = new Date();
         selectedDate.setHours(hours);
         selectedDate.setMinutes(minutes);
 
-        // Format the selected date as an ISO string
-        selectedTime = selectedDate.toISOString();
-
+        return selectedDate;
     }
+}
+valueDisplay.textContent = slider.value;
+slider.addEventListener("input", () => {
+    valueDisplay.textContent = slider.value;
+});
+// Add a click event listener to the button
+planButton.addEventListener("click", handlePlanButton);
 
-    // Get the transfer time value from the slider
-    const transferTime = document.querySelector(".transfertime-slider").value;
+async function handlePlanButton() {
+    const selectedFromLocation = document.querySelector(".fromlocation.selected");
+    const selectedToLocation = document.querySelector(".tolocation.selected");
+    const time = getTime();
+    const transferTime = slider.value
 
-    // Check if all necessary parameters are selected/filled
-    if (selectedFromLocation && selectedToLocation && selectedTime) {
-        // Construct the URL for the GET request with the selected parameters
-        const apiUrl = `/your-api-endpoint?from=${selectedFromLocation.textContent}&to=${selectedToLocation.textContent}&time=${selectedTime}&transfertime=${transferTime}`;
+    if (selectedFromLocation && selectedToLocation && time && transferTime) {
+        console.log("All necessary parameters are selected.");
 
-        // Send a GET request using the fetch API
-        fetch(apiUrl)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP Error! Status: ${response.status}`);
+        try {
+            const response = await axios.get('http://localhost:3001/plan', {
+                params: {
+                    from: selectedFromLocation.innerText,
+                    to: selectedToLocation.innerText,
+                    time: time,
+                    transferTime: transferTime
                 }
-                return response.json(); // Parse response as JSON
-            })
-            .then((data) => {
-                // Handle the response data here
-                console.log(data);
-            })
-            .catch((error) => {
-                // Handle any errors that occurred during the fetch
-                console.error("Fetch Error:", error);
             });
+
+            console.log("API Response: ", response.data.toString());
+        } catch (error) {
+            console.error("API Request Error:", error);
+        }
     } else {
-        // Handle the case where not all necessary parameters are selected/filled
+        console.log("Necessary parameters are not selected.");
         alert("Please select all necessary parameters.");
     }
 }

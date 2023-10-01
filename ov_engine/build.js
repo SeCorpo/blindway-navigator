@@ -26,14 +26,14 @@ class Build {
             let search_array1 = await search1.fetchTrainTrackRows();
 
             //if any route was found
-            if(search_array1.length > 0) {
+            if(search_array1) {
                 for (const row of search_array1) {
                     let array1 = [row];
 
                     const search2 = new Search(this.findNext_search_station(row), this.findNext_search_start_time(row));
                     let search_array2 = await search2.fetchTrainTrackRows();
 
-                    if(search_array2.length > 0) {
+                    if(search_array2) {
                         for (const row2 of search_array2) {
                             if(this.findNext_search_station(row2) === this.end_station_name_journey) {
                                 this.routeFound.push(row, row2);
@@ -44,7 +44,7 @@ class Build {
                                 const search3 = new Search(this.findNext_search_station(row2), this.findNext_search_start_time(row2));
                                 let search_array3 = await search3.fetchTrainTrackRows();
 
-                                if(search_array3.length > 0) {
+                                if(search_array3) {
                                     for(const row3 of search_array3) {
                                         if(this.findNext_search_station(row3) === this.end_station_name_journey) {
                                             this.routeFound.push(row, row2, row3);
@@ -99,7 +99,7 @@ class Build {
             result += 'arrivalPlatform: ' + row.arrivalPlatform + '\n';
             result += '------------------\n';
         });
-
+        console.log(result)
         return result;
     }
 
