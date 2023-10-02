@@ -27,7 +27,11 @@ class Build {
 
             //if any route was found
             if(search_array1) {
+
                 for (const row of search_array1) {
+                    console.log('build - row from:',row.start_station_name, 'to: ', row.end_station_name,
+                        'dep:', row.timeOfDeparture, 'arr:', row.timeOfArrival);
+
                     let array1 = [row];
 
                     const search2 = new Search(this.findNext_search_station(row), this.findNext_search_start_time(row));
@@ -35,6 +39,9 @@ class Build {
 
                     if(search_array2) {
                         for (const row2 of search_array2) {
+                            console.log('build - row2 from:',row2.start_station_name, 'to: ', row2.end_station_name,
+                                'dep:', row2.timeOfDeparture, 'arr:', row2.timeOfArrival);
+
                             if(this.findNext_search_station(row2) === this.end_station_name_journey) {
                                 this.routeFound.push(row, row2);
                             } else {
@@ -46,6 +53,8 @@ class Build {
 
                                 if(search_array3) {
                                     for(const row3 of search_array3) {
+                                        console.log('build - row3 from:',row3.start_station_name, 'to: ', row3.end_station_name,
+                                            'dep:', row3.timeOfDeparture, 'arr:', row3.timeOfArrival);
                                         if(this.findNext_search_station(row3) === this.end_station_name_journey) {
                                             this.routeFound.push(row, row2, row3);
                                         } else{

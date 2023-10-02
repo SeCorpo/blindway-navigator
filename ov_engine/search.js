@@ -17,11 +17,14 @@ class Search {
 
 
 
+
             //end time = +1 hour
             const endTime = new Date(this.startTime);
             endTime.setHours(startHour + 1);
             endTime.setMinutes(startMinutes);
             const endTimeString = `${endTime.getHours().toString().padStart(2, '0')}:${endTime.getMinutes().toString().padStart(2, '0')}` + ':00';
+
+            console.log('search - From: [', this.start_station_name, '] startTimeString: ', startTimeString, ' endTimeString: ' + endTimeString);
 
             // Create a MySQL query to retrieve rows within the 1-hour time period
             const query =

@@ -35,11 +35,13 @@ nowButton.addEventListener("click", function() {
 function getTime() {
     if (document.getElementById("nowButton").classList.contains("selected")) {
         return new Date();
+
     } else {
 
         const timeInputValue = document.getElementById("timeInput").value;
         const [hours, minutes] = timeInputValue.split(":");
         const selectedDate = new Date();
+
         selectedDate.setHours(hours);
         selectedDate.setMinutes(minutes);
 

@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     const timeString = req.query.time; // Get the time parameter from the query string
     const timeParsed = new Date(timeString); // Parse it into a Date object
 
-    console.log('Planner: new build - From: ', from, ' To: ', to, ' TimeParsed: ', timeParsed, ' Transfertime: ', transferTime)
+    console.log('Planner: new build - From: [', from, '] To: [', to, '] TimeParsed: ', timeParsed, ' Transfertime: ', transferTime)
 
     const buildInstance = new Build(from, to, timeParsed, transferTime);
 
