@@ -13,12 +13,10 @@ router.get('/', (req, res) => {
     console.log('time:', time);
     console.log('transferTime:', transferTime);
 
-    const timeString = req.query.time; // Get the time parameter from the query string
-    const timeParsed = new Date(timeString); // Parse it into a Date object
 
-    console.log('Planner: new build - From: [', from, '] To: [', to, '] TimeParsed: ', timeParsed, ' Transfertime: ', transferTime)
+    console.log('Planner: new build params - From: [', from, '] To: [', to, '] time: ', time, ' Transfertime: ', transferTime)
 
-    const buildInstance = new Build(from, to, timeParsed, transferTime);
+    const buildInstance = new Build(from, to, time, transferTime);
 
 
 

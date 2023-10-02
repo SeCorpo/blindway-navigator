@@ -34,18 +34,16 @@ nowButton.addEventListener("click", function() {
 });
 function getTime() {
     if (document.getElementById("nowButton").classList.contains("selected")) {
-        return new Date();
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        return `${hours}:${minutes}:${seconds}`;
 
     } else {
 
-        const timeInputValue = document.getElementById("timeInput").value;
-        const [hours, minutes] = timeInputValue.split(":");
-        const selectedDate = new Date();
+        return document.getElementById("timeInput").value + ':00';
 
-        selectedDate.setHours(hours);
-        selectedDate.setMinutes(minutes);
-
-        return selectedDate;
     }
 }
 valueDisplay.textContent = slider.value;

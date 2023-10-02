@@ -10,28 +10,15 @@ class Search {
 
     async fetchTrainTrackRows() {
         try {
-            //get time from date
-            const startHour = this.startTime.getHours();
-            const startMinutes = this.startTime.getMinutes();
-            const startTimeString = `${startHour.toString().padStart(2, '0')}:${startMinutes.toString().padStart(2, '0')}` + ':00';
 
-
-
-
-            //end time = +1 hour
-            const endTime = new Date(this.startTime);
-            endTime.setHours(startHour + 1);
-            endTime.setMinutes(startMinutes);
-            const endTimeString = `${endTime.getHours().toString().padStart(2, '0')}:${endTime.getMinutes().toString().padStart(2, '0')}` + ':00';
-
-            console.log('search - From: [', this.start_station_name, '] startTimeString: ', startTimeString, ' endTimeString: ' + endTimeString);
+            console.log('search - From: [', this.start_station_name, '] startTimeString: ', this.startTime, ' endTimeString: ', this.getTimePlusOneHour());
 
             // Create a MySQL query to retrieve rows within the 1-hour time period
             const query =
                 `SELECT * FROM train_tracks WHERE start_station_name = ? AND TIME(timeOfDeparture) >= ? AND TIME(timeOfDeparture) <= ?;`;
 
             // Execute the query with the provided parameters
-            this.rows = await db.query(query, [this.start_station_name, startTimeString, endTimeString]);
+            this.rows = await db.query(query, [this.start_station_name, this.startTime, this.getTimePlusOneHour()]);
 
             if(this.rows.length > 0) {
                 console.log('search - fetchTrainTrackRows: rows - ' + this.rows.length)
@@ -43,6 +30,19 @@ class Search {
             console.error('Error executing the query:', error);
             throw error;
         }
+    }
+    getTimePlusOneHour() {
+        const [hours, minutes, seconds] = this.startTime.split(":").map(Number);
+
+        let newHours = hours + 1;
+        let newMinutes = minutes;
+        let newSeconds = seconds;
+
+        if (newHours >= 24) {
+            newHours -= 24;
+        }
+
+        return `${newHours.toString().padStart(2, '0')}:${newMinutes.toString().padStart(2, '0')}:${newSeconds.toString().padStart(2, '0')}`;
     }
 }
 

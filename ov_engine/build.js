@@ -8,6 +8,8 @@ class Build {
         this.startTime = startTime;
         this.transferTime = transferTime;
 
+
+
         this.routeFound = [];
         this.routeString = 'Vul alle velden in';
 
@@ -29,8 +31,6 @@ class Build {
             if(search_array1) {
 
                 for (const row of search_array1) {
-                    console.log('build - row from:',row.start_station_name, 'to: ', row.end_station_name,
-                        'dep:', row.timeOfDeparture, 'arr:', row.timeOfArrival);
 
                     let array1 = [row];
 
@@ -39,8 +39,6 @@ class Build {
 
                     if(search_array2) {
                         for (const row2 of search_array2) {
-                            console.log('build - row2 from:',row2.start_station_name, 'to: ', row2.end_station_name,
-                                'dep:', row2.timeOfDeparture, 'arr:', row2.timeOfArrival);
 
                             if(this.findNext_search_station(row2) === this.end_station_name_journey) {
                                 this.routeFound.push(row, row2);
@@ -53,8 +51,7 @@ class Build {
 
                                 if(search_array3) {
                                     for(const row3 of search_array3) {
-                                        console.log('build - row3 from:',row3.start_station_name, 'to: ', row3.end_station_name,
-                                            'dep:', row3.timeOfDeparture, 'arr:', row3.timeOfArrival);
+
                                         if(this.findNext_search_station(row3) === this.end_station_name_journey) {
                                             this.routeFound.push(row, row2, row3);
                                         } else{
@@ -86,12 +83,15 @@ class Build {
         return row.end_station_name;
     }
     findNext_search_start_time(row) {
-        let next_start_time = row.timeOfArrival;
+        const arrivalTimeParts = row.timeOfArrival.split(' ')[1].split(':');
+        const hours = parseInt(arrivalTimeParts[0]);
+        const minutes = parseInt(arrivalTimeParts[1]);
 
-        next_start_time = new Date(next_start_time);
-        next_start_time.setMinutes(next_start_time.getMinutes() + this.transferTime);
+        const arrivalMinutes = minutes + this.transferTime;
+        const newMinutes = arrivalMinutes % 60;
+        const newHours = hours + Math.floor(arrivalMinutes / 60);
 
-        return next_start_time;
+        return `${newHours.toString().padStart(2, '0')}:${newMinutes.toString().padStart(2, '0')}:${arrivalTimeParts[2]}`;
     }
 
     getRouteAsString() {
