@@ -72,7 +72,10 @@ async function handlePlanButton() {
                 }
             });
 
-            console.log("API Response: ", response.data.toString());
+            const routeFound = response.data.routeFound;
+            //Data handling
+            printRoutesAsString(routeFound);
+
         } catch (error) {
             console.error("API Request Error:", error);
         }
@@ -81,3 +84,25 @@ async function handlePlanButton() {
         alert("Please select all necessary parameters.");
     }
 }
+function printRoutesAsString(routeFound) {
+    try {
+
+        let result = '';
+
+        routeFound.forEach((row, index) => {
+            result += 'Track: ' + (index + 1) + '\n';
+            result += 'track_id: ' + row.track_id + '\n';
+            result += 'start_station_name: ' + row.start_station_name + '\n';
+            result += 'end_station_name: ' + row.end_station_name + '\n';
+            result += 'timeOfDeparture: ' + row.timeOfDeparture + '\n';
+            result += 'timeOfArrival: ' + row.timeOfArrival + '\n';
+            result += 'departurePlatform: ' + row.departurePlatform + '\n';
+            result += 'arrivalPlatform: ' + row.arrivalPlatform + '\n';
+            result += '------------------\n';
+        });
+        console.log(result);
+    } catch(error) {
+        console.error('Cannot find route')
+    }
+}
+

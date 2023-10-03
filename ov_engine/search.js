@@ -4,6 +4,7 @@ class Search {
     constructor(start_station_name, startTime) {
         this.start_station_name = start_station_name;
         this.startTime = startTime;
+        console.log('search - this.startTime:', this.startTime); // Debugging statement
     }
 
     rows = [];
@@ -18,7 +19,7 @@ class Search {
                 `SELECT * FROM train_tracks WHERE start_station_name = ? AND TIME(timeOfDeparture) >= ? AND TIME(timeOfDeparture) <= ?;`;
 
             // Execute the query with the provided parameters
-            this.rows = await db.query(query, [this.start_station_name, this.startTime, this.getTimePlusOneHour()]);
+            this.rows = await db.query(query, [this.start_station_name, this.startTime, await this.getTimePlusOneHour()]);
 
             if(this.rows.length > 0) {
                 console.log('search - fetchTrainTrackRows: rows - ' + this.rows.length)
@@ -26,7 +27,7 @@ class Search {
             } else {
                 console.error('search - fetchTrainTrackRows: rows !> 0')
             }
-        } catch (error) {
+        } catch(error) {
             console.error('Error executing the query:', error);
             throw error;
         }
@@ -43,6 +44,21 @@ class Search {
         }
 
         return `${newHours.toString().padStart(2, '0')}:${newMinutes.toString().padStart(2, '0')}:${newSeconds.toString().padStart(2, '0')}`;
+    }
+    async fetchTimeOfArrival(trackId) {
+        try {
+            const query = `SELECT TIME(timeOfArrival) as time FROM train_tracks WHERE track_id = ?`;
+            const result = await db.query(query, [trackId]);
+
+            if (result.length > 0) {
+                return result[0].time;
+            } else {
+                throw new Error('No matching records found');
+            }
+        } catch(error) {
+            console.log('search: cannot fetch timeOfArrival from row:');
+            throw error;
+        }
     }
 }
 

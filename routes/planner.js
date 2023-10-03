@@ -4,7 +4,7 @@ var router = express.Router();
 var Build = require('../ov_engine/build');
 const path = require('path');
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 
     const { from, to, time, transferTime } = req.query;
 
@@ -16,12 +16,11 @@ router.get('/', (req, res) => {
 
     console.log('Planner: new build params - From: [', from, '] To: [', to, '] time: ', time, ' Transfertime: ', transferTime)
 
-    const buildInstance = new Build(from, to, time, transferTime);
-
-
+    const buildInstance = await new Build(from, to, time, transferTime);
+    const routeFound = await buildInstance.getRouteFound();
 
     res.json({
-        routeString: buildInstance.routeString,
+        routeFound: routeFound,
     });
 });
 
