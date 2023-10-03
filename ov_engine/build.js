@@ -24,7 +24,7 @@ class Build {
     //build a route from start_station_name_journey > end_station_name_journey @ startTime from up to three train_tracks
     async buildRoute() {
         try {
-
+            console.log('Start of buildRoute'); // Add more log statements as needed
             const search1 = new Search(this.start_station_name_journey, this.startTime);
             let search_array1 = await search1.fetchTrainTrackRows();
 
@@ -35,7 +35,7 @@ class Build {
 
                     let array1 = [row];
 
-                    const search2 = new Search(this.findNext_search_station(row), await search1.fetchTimeOfArrival(row.track_id));
+                    const search2 = new Search(this.findNext_search_station(row), await search1.fetchTimeOfArrival(this.transferTime, row.track_id));
                     let search_array2 = await search2.fetchTrainTrackRows();
 
                     if(search_array2) {
@@ -48,7 +48,7 @@ class Build {
                                 console.error('in=build: no train_track found from second station within an hour');
 
                                 //tree train_tracks deep
-                                const search3 = new Search(this.findNext_search_station(row2), await search2.fetchTimeOfArrival(row2.track_id));
+                                const search3 = new Search(this.findNext_search_station(row2), await search2.fetchTimeOfArrival(this.transferTime, row2.track_id));
                                 let search_array3 = await search3.fetchTrainTrackRows();
 
                                 if(search_array3) {
@@ -77,6 +77,7 @@ class Build {
 
             //DEBUG console.log(('in=build: number of rows in routeFound ' + this.routeFound.length));
             this.routeString = this.getRouteAsString(); //DEBUG
+            console.log('End of buildRoute'); // Add more log statements as needed
         } catch(error) {
             console.error('in=build: cannot build route ', error);
             this.routeString = 'in=build: Error building route: ' + error;

@@ -45,10 +45,17 @@ class Search {
 
         return `${newHours.toString().padStart(2, '0')}:${newMinutes.toString().padStart(2, '0')}:${newSeconds.toString().padStart(2, '0')}`;
     }
-    async fetchTimeOfArrival(trackId) {
+    async fetchTimeOfArrival(transferTime, trackId) {
         try {
-            const query = `SELECT TIME(timeOfArrival) as time FROM train_tracks WHERE track_id = ?`;
-            const result = await db.query(query, [trackId]);
+            //const query = `SELECT TIME(timeOfArrival) as time FROM train_tracks WHERE track_id = ?`;
+
+            const query = `
+            SELECT TIME(DATE_ADD(timeOfArrival, INTERVAL ? MINUTE)) as time
+            FROM train_tracks
+            WHERE track_id = ?
+        `;
+
+            const result = await db.query(query, [transferTime, trackId]);
 
             if (result.length > 0) {
                 return result[0].time;
