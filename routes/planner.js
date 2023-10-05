@@ -19,9 +19,11 @@ router.get('/', async (req, res) => {
     const buildInstance = await new Build(from, to, time, transferTime);
     const routeFound = await buildInstance.getRouteFound();
 
-    res.json({
-        routeFound: routeFound,
-    });
+    if (routeFound) {
+        res.json({ routeFound: routeFound });
+    } else {
+        res.status(404).json({ error: 'No route found.' });
+    }
 });
 
 module.exports = router;

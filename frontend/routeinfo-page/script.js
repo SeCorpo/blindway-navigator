@@ -1,3 +1,8 @@
+window.addEventListener('load', function() {
+    initialize()
+});
+
+
 let slideIndex = 0;
 const slides = document.getElementsByClassName("transfer-info");
 showSlides(slideIndex);
@@ -11,6 +16,24 @@ const nextButton = document.querySelector('button[name="next"]');
 previousButton.addEventListener("click", handlePreviousButtonClick);
 playButton.addEventListener("click", handlePlayButtonClick);
 nextButton.addEventListener("click", handleNextButtonClick);
+
+const routeFoundData = localStorage.getItem('routeFoundData');
+
+
+function initialize() {
+    if (routeFoundData) {
+        // Parse the JSON data
+        const routeFound = JSON.parse(routeFoundData);
+
+        inputSlides(routeFound);
+
+        //localStorage.removeItem('routeFoundData');
+    } else {
+        console.error("No route found data available.");
+        // Handle the case where there is no routeFound data in localStorage
+    }
+}
+
 
 // Function to handle the "Previous" button click
 function handlePreviousButtonClick() {
@@ -46,4 +69,29 @@ function showSlides(n) {
 
     // Display the current slide
     slides[slideIndex].style.display = "block";
+}
+
+function inputSlides(routeFound) {
+    const container = document.querySelector('.info-grid');
+
+    container.textContent = '';
+
+    for (let i = 0; i < routeFound.length; i++) {
+        const row = routeFound[i];
+        const newDiv = document.createElement('div');
+        newDiv.className = 'transfer-info fade';
+        newDiv.innerHTML =
+            '<hr>' +
+            '<p>Track: ' + (i + 1) + '</p>' +
+            '<p>Track id: ' + row.track_id + '</p>' +
+            '<p>Start Station name: ' + row.start_station_name + '</p>' +
+            '<p>End Station name: ' + row.end_station_name + '</p>' +
+            '<p>Time of departure: ' + row.timeOfDeparture + '</p>' +
+            '<p>Time of arrival: ' + row.timeOfArrival + '</p>' +
+            '<p>Departure platform: ' + row.departurePlatform + '</p>' +
+            '<p>Arrival platform: ' + row.arrivalPlatform + '</p>' +
+            '<hr>';
+
+        container.appendChild(newDiv);
+    }
 }
