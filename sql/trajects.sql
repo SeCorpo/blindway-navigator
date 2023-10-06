@@ -74,10 +74,12 @@ CREATE TABLE `train_tracks` (
   `track_id` int NOT NULL AUTO_INCREMENT,
   `start_station_name` varchar(255) DEFAULT NULL,
   `end_station_name` varchar(255) DEFAULT NULL,
-  `timeOfDeparture` datetime DEFAULT NULL,
-  `timeOfArrival` datetime DEFAULT NULL,
-  `departurePlatform` varchar(4) DEFAULT NULL,
-  `arrivalPlatform` varchar(4) DEFAULT NULL,
+  `timeOfDeparture` datetime NOT NULL,
+  `timeOfArrival` datetime NOT NULL,
+  `departurePlatform` varchar(4) NOT NULL,
+  `arrivalPlatform` varchar(4) NOT NULL,
+  `train_type` varchar(4) NOT NULL,
+  `exitSide` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`track_id`),
   KEY `start_station_name` (`start_station_name`),
   KEY `end_station_name` (`end_station_name`),
@@ -92,7 +94,7 @@ CREATE TABLE `train_tracks` (
 
 LOCK TABLES `train_tracks` WRITE;
 /*!40000 ALTER TABLE `train_tracks` DISABLE KEYS */;
-INSERT INTO `train_tracks` VALUES (2,'Amersfoort','Utrecht','2023-09-20 12:10:00','2023-09-20 12:23:00','6','8'),(3,'Utrecht','Den Bosch','2023-09-20 12:33:00','2023-09-20 13:01:00','15','6'),(4,'Amersfoort','Utrecht','2023-09-20 13:10:00','2023-09-20 13:23:00','6','8'),(5,'Utrecht','Den Bosch','2023-09-20 13:33:00','2023-09-20 14:01:00','18','6'),(6,'Haarlem','Amsterdam','2023-09-22 12:02:00','2023-09-22 12:20:00','3','1'),(7,'Amsterdam','Utrecht','2023-09-22 12:24:00','2023-09-22 12:51:00','4','19'),(8,'Utrecht','Den Bosch','2023-09-22 12:54:00','2023-09-22 13:22:00','18','6');
+INSERT INTO `train_tracks` VALUES (2,'Amersfoort','Utrecht','2023-09-20 12:10:00','2023-09-20 12:23:00','6','8','IC','R'),(3,'Utrecht','Den Bosch','2023-09-20 12:33:00','2023-09-20 13:01:00','15','6','IC','R'),(4,'Amersfoort','Utrecht','2023-09-20 13:10:00','2023-09-20 13:23:00','6','8','IC','R'),(5,'Utrecht','Den Bosch','2023-09-20 13:33:00','2023-09-20 14:01:00','18','6','IC','R'),(6,'Haarlem','Amsterdam','2023-09-22 12:02:00','2023-09-22 12:20:00','3','1','IC','L'),(7,'Amsterdam','Utrecht','2023-09-22 12:24:00','2023-09-22 12:51:00','4','19','IC','R'),(8,'Utrecht','Den Bosch','2023-09-22 12:54:00','2023-09-22 13:22:00','18','6','IC','R');
 /*!40000 ALTER TABLE `train_tracks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -105,4 +107,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-25 13:53:33
+-- Dump completed on 2023-10-06 19:22:31
