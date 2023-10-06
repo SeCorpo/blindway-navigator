@@ -15,7 +15,7 @@ body, html {
 
 /* Style grid items (rows) */
 .grid-item {
-    background-color: #f0f0f0; /* Background color */
+    background-color: #34495e; /* Background color */
     padding: 20px; /* Adjust padding as needed */
     text-align: center; /* Center content */
 }
@@ -41,10 +41,10 @@ body, html {
     font-weight: normal;
     font-style: normal;
     color: #222222;
-    background-color: #FFCC00FF;
+    background-color: #FFD60AFF;
 }
 .fromlocation:active {
-    background-color: #007AFFFF; /* Change the background color when pressed */
+    background-color: #3584e4; /* Change the background color when pressed */
 }
 .tolocation:active {
     background-color: #33d17a; /* Change the background color when pressed */
@@ -163,7 +163,7 @@ body, html {
     width: 20px; /* Fixed width to accommodate two characters */
     text-align: center; /* Center the text within the fixed width */
     font-size: 25px;
-    color: #444444;
+    color: #FFFFFF;
     margin-left: 10px;
 }
 

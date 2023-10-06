@@ -16,17 +16,17 @@ body, html {
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    background-color: #f0f0f0; /* Background color */
+    background-color: #34495e; /* Background color */
     padding: 20px; /* Adjust padding as needed */
     text-align: center; /* Center content */
 }
 .info-grid {
-    background-color: #f0f0f0; /* Background color */
+    background-color: #34495e; /* Background color */
     padding: 20px; /* Adjust padding as needed */
     text-align: center; /* Center content */
 }
 .buttons-grid {
-    background-color: #f0f0f0; /* Background color */
+    background-color: #34495e; /* Background color */
     padding: 20px; /* Adjust padding as needed */
     text-align: center; /* Center content */
 }
@@ -74,7 +74,7 @@ body, html {
     font-weight: normal;
     font-style: normal;
     color: #222222;
-    background-color: #007AFFFF;
+    background-color: #0A84FFFF;
     transition: background-color 0.5s; /* Add a transition with a 0.3s duration */
 }
 .select-btn:active {
@@ -96,6 +96,6 @@ body, html {
     transition: background-color 0.7s; /* Add a transition with a 0.3s duration */
 }
 .play-btn:active {
-    background-color: #FFCC00FF; /* Change the background color when pressed */
+    background-color: #FFD60AFF; /* Change the background color when pressed */
     transition: background-color 0s; /* Override the transition for the pressed state */
 }

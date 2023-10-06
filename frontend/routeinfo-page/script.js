@@ -26,10 +26,10 @@ function initialize() {
         const routeFound = JSON.parse(routeFoundData);
 
         inputSlides(routeFound);
-
+        showSlides(0)
         //localStorage.removeItem('routeFoundData');
     } else {
-        console.error("No route found data available.");
+        console.error("No route found data available. Go back to last page");
         // Handle the case where there is no routeFound data in localStorage
     }
 }
@@ -49,7 +49,9 @@ function handleNextButtonClick() {
 
 // Function to handle the "Play" button click
 function handlePlayButtonClick() {
-    //alert("Play button clicked"); // Replace with your logic
+    //play audio
+    //stop auto
+    //start countdown timer till closest instap/uitstap
 }
 
 function showSlides(n) {
@@ -80,18 +82,25 @@ function inputSlides(routeFound) {
         const row = routeFound[i];
         const newDiv = document.createElement('div');
         newDiv.className = 'transfer-info fade';
-        newDiv.innerHTML =
-            '<hr>' +
-            '<p>Track: ' + (i + 1) + '</p>' +
-            '<p>Track id: ' + row.track_id + '</p>' +
-            '<p>Start Station name: ' + row.start_station_name + '</p>' +
-            '<p>End Station name: ' + row.end_station_name + '</p>' +
-            '<p>Time of departure: ' + row.timeOfDeparture + '</p>' +
-            '<p>Time of arrival: ' + row.timeOfArrival + '</p>' +
-            '<p>Departure platform: ' + row.departurePlatform + '</p>' +
-            '<p>Arrival platform: ' + row.arrivalPlatform + '</p>' +
-            '<hr>';
+
+        standardText(newDiv, row, i); // Pass newDiv, row, and i to standardText
 
         container.appendChild(newDiv);
     }
 }
+
+function standardText(newDiv, row, i) {
+    newDiv.innerHTML =
+        '<hr>' +
+        '<p>Track: ' + (i + 1) + '</p>' +
+        '<p>Beginstation: ' + row.start_station_name + '</p>' +
+        '<p>Eindstation: ' + row.end_station_name + '</p>' +
+        '<p>Vertrektijd: ' + row.timeOfDeparture + '</p>' +
+        '<p>Aankomsttijd: ' + row.timeOfArrival + '</p>' +
+        '<p>Vertrek perron: ' + row.departurePlatform + '</p>' +
+        '<p>Aankomst perron: ' + row.arrivalPlatform + '</p>' +
+        '<p>Trein type: ' + row.train_type + '</p>' +
+        '<p>Uitstapzijde: ' + row.exitSide + '</p>' +
+        '<hr>';
+}
+//PLS MAKE NEW FUNCTION FOR OTHER TEXT OUTPUT

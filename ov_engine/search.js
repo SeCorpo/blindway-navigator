@@ -15,8 +15,11 @@ class Search {
             console.log('search - From: [', this.start_station_name, '] startTimeString: ', this.startTime, ' endTimeString: ', this.getTimePlusOneHour());
 
             // Create a MySQL query to retrieve rows within the 1-hour time period
-            const query =
-                `SELECT * FROM train_tracks WHERE start_station_name = ? AND TIME(timeOfDeparture) >= ? AND TIME(timeOfDeparture) <= ?;`;
+            // const query =
+            //     `SELECT * FROM train_tracks WHERE start_station_name = ? AND TIME(timeOfDeparture) >= ? AND TIME(timeOfDeparture) <= ?;`;
+
+            const query = `SELECT track_id, start_station_name, end_station_name, TIME(timeOfDeparture) as timeOfDeparture, TIME(timeOfArrival) as timeOfArrival, departurePlatform, arrivalPlatform, train_type, exitSide 
+FROM train_tracks WHERE start_station_name = ? AND TIME(timeOfDeparture) >= ? AND TIME(timeOfDeparture) <= ?;`;
 
             // Execute the query with the provided parameters
             this.rows = await db.query(query, [this.start_station_name, this.startTime, await this.getTimePlusOneHour()]);
