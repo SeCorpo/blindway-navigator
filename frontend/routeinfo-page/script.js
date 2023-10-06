@@ -7,9 +7,9 @@ let slideIndex = 0;
 const slides = document.getElementsByClassName("transfer-info");
 showSlides(slideIndex);
 
-const previousButton = document.querySelector('button[name="previous"]');
-const playButton = document.querySelector('button[name="play"]');
-const nextButton = document.querySelector('button[name="next"]');
+const previousButton = document.querySelector('.prev-btn');
+const playButton = document.querySelector('.play-btn');
+const nextButton = document.querySelector('.next-btn');
 
 
 //LISTENERS
