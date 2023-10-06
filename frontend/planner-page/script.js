@@ -1,4 +1,5 @@
 // JavaScript to handle button selection
+const darkModeSwitch = document.getElementById("myonoffswitch")
 const fromButtons = document.querySelectorAll(".fromlocation");
 const toButtons = document.querySelectorAll(".tolocation");
 
@@ -9,6 +10,7 @@ const valueDisplay = document.querySelector(".transfertime-value");
 
 const planButton = document.getElementById("planButton");
 
+darkModeSwitch.addEventListener("change", darkMode);
 fromButtons.forEach((button) => {
     button.addEventListener("click", () => {
         fromButtons.forEach((btn) => {
@@ -32,6 +34,7 @@ toButtons.forEach((button) => {
 nowButton.addEventListener("click", function() {
     nowButton.classList.toggle("selected");
 });
+
 function getTime() {
     if (document.getElementById("nowButton").classList.contains("selected")) {
         const now = new Date();
@@ -91,8 +94,14 @@ async function handlePlanButton() {
         alert("Please select all necessary parameters.");
     }
 }
-
-
 function redirectToRouteInfoPage() {
     window.location.href = '../routeinfo-page/routeinfo.html';
+}
+function darkMode() {
+    var body = document.body;
+    if (darkModeSwitch.checked) {
+        body.classList.add("dark-mode");
+    } else {
+        body.classList.remove("dark-mode");
+    }
 }

@@ -3,6 +3,15 @@ body, html {
     margin: 0;
     padding: 0;
 }
+.dark-mode {
+    .grid-item {
+        background-color: #34495e;}
+    .grid-container {
+        background-color: #545454;}
+    .transfer-info {
+        background-color: #4974a5;
+    }
+}
 
 /* Create the grid container */
 .grid-container {
@@ -12,23 +21,15 @@ body, html {
     height: 100vh; /* 100% of the viewport height */
     width: 100%; /* 100% of the viewport width */
 }
+.grid-item {
+    background-color: #f0f0f0; /* Background color */
+    padding: 20px; /* Adjust padding as needed */
+    text-align: center; /* Center content */
+}
 .timer-grid {
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    background-color: #f0f0f0; /* Background color */
-    padding: 20px; /* Adjust padding as needed */
-    text-align: center; /* Center content */
-}
-.info-grid {
-    background-color: #f0f0f0; /* Background color */
-    padding: 20px; /* Adjust padding as needed */
-    text-align: center; /* Center content */
-}
-.buttons-grid {
-    background-color: #f0f0f0; /* Background color */
-    padding: 20px; /* Adjust padding as needed */
-    text-align: center; /* Center content */
 }
 
 /* Define a CSS class for the timer */

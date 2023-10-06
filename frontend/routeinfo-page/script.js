@@ -7,12 +7,14 @@ let slideIndex = 0;
 const slides = document.getElementsByClassName("transfer-info");
 showSlides(slideIndex);
 
+const darkModeSwitch = document.getElementById("myonoffswitch")
 const previousButton = document.querySelector('.prev-btn');
 const playButton = document.querySelector('.play-btn');
 const nextButton = document.querySelector('.next-btn');
 
 
 //LISTENERS
+darkModeSwitch.addEventListener("change", darkMode);
 previousButton.addEventListener("click", handlePreviousButtonClick);
 playButton.addEventListener("click", handlePlayButtonClick);
 nextButton.addEventListener("click", handleNextButtonClick);
@@ -88,7 +90,14 @@ function inputSlides(routeFound) {
         container.appendChild(newDiv);
     }
 }
-
+function darkMode() {
+    var body = document.body;
+    if (darkModeSwitch.checked) {
+        body.classList.add("dark-mode");
+    } else {
+        body.classList.remove("dark-mode");
+    }
+}
 function standardText(newDiv, row, i) {
     newDiv.innerHTML =
         '<hr>' +

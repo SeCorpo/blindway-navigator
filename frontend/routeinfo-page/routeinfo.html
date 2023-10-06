@@ -8,13 +8,17 @@
 </head>
 <body>
 <div class="grid-container">
-    <div class="timer-grid">
+    <div class="timer-grid grid-item">
+        <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0">
+            <label class="onoffswitch-label" for="myonoffswitch"></label>
+        </div>
         <div class="timer">
             <span class="minutes">07</span>:<span class="seconds">23</span>
         </div>
 
     </div>
-    <div class="info-grid">
+    <div class="info-grid grid-item">
 
         <div class="transfer-info fade">
             transfer-info1
@@ -30,7 +34,7 @@
 
     </div>
 
-    <div class="buttons-grid">
+    <div class="buttons-grid grid-item">
         <button type="button" class="select-btn prev-btn" name="previous">
             <<
         </button>

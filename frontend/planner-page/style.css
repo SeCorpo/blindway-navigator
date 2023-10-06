@@ -4,6 +4,15 @@ body, html {
     padding: 0;
 }
 
+.dark-mode {
+    .grid-item {
+        background-color: #34495e;}
+    .transfertime-value {
+        color: #FFFFFF;}
+    .grid-container {
+        background-color: #545454;}
+    }
+
 /* Create the grid container */
 .grid-container {
     display: grid;
@@ -75,7 +84,7 @@ body, html {
     font-weight: normal;
     font-style: normal;
     color: #222222;
-    background-color: #f6d32d;
+    background-color: #FFCC00FF;
     display: flex; /* Make it a flex container */
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
@@ -104,7 +113,7 @@ body, html {
     font-weight: normal;
     font-style: normal;
     color: #222222;
-    background-color: #f6d32d;
+    background-color: #FFCC00FF;
     cursor: pointer; /* Change cursor on hover */
     transition: background-color 0.2s; /* Add a smooth transition for background color */
     margin-left: 10px; /* Add spacing to the left of the button */
@@ -178,7 +187,7 @@ body, html {
     font-weight: normal;
     font-style: normal;
     color: #222222;
-    background-color: #f6d32d;
+    background-color: #FFCC00FF;
     display: block; /* Make it a block-level element to center it horizontally */
     text-align: center; /* Center text horizontally */
 }
@@ -187,4 +196,40 @@ body, html {
 }
 .plan-btn.selected {
     background-color: #1c71d8; /* Change the background color when selected */
+}
+
+/*DARK MODE SWITCH IOS 13*/
+.onoffswitch {
+    position: relative; width: 60px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    height: 36px; padding: 0; line-height: 36px;
+    border: 2px solid #E3E3E3; border-radius: 36px;
+    background-color: #FFFFFF;
+    transition: background-color 0.3s ease-in;
+}
+.onoffswitch-label:before {
+    content: "";
+    display: block; width: 36px; margin: 0px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 22px;
+    border: 2px solid #E3E3E3; border-radius: 36px;
+    transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #49E845;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    border-color: #49E845;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0px;
 }

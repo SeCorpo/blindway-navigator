@@ -8,8 +8,11 @@
 </head>
 <body>
 <div class="grid-container">
-  <div class="grid-item">Location buttons
-
+  <div class="grid-item">
+    <div class="onoffswitch">
+      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0">
+      <label class="onoffswitch-label" for="myonoffswitch"></label>
+    </div>
     <div class="location-row">
       <div class="location-column">
         <button type="button" class="locationbtn fromlocation" name="fromAmersfoort">
@@ -35,7 +38,7 @@
       </div>
     </div>
   </div>
-  <div class="grid-item">Time planner
+  <div class="grid-item">
     <div class="clock-and-button">
       <div class="clock">
         <input type="time" name="time" id="timeInput" value="12:00"/>
@@ -49,7 +52,7 @@
       <span class="transfertime-value">20</span>
     </div>
   </div>
-  <div class="grid-item">Plan button
+  <div class="grid-item">
     <button type="button" class="plan-btn" id="planButton">Plan Reis</button>
     <a href="../routeinfo-page/routeinfo.html">Go to route information page</a>
   </div>
