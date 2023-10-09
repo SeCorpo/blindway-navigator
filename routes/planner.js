@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
     console.log('transferTime:', transferTime);
 
 
-    console.log('Planner: new build params - From: [', from, '] To: [', to, '] time: ', time, ' Transfertime: ', transferTime)
+    console.log('DEBUG: Planner: new build params - From: [', from, '] To: [', to, '] time: ', time, ' Transfertime: ', transferTime)
 
     const buildInstance = await new Build(from, to, time, transferTime);
     const routeFound = await buildInstance.getRouteFound();

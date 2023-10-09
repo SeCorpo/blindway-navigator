@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../blindway.css">
+    <link rel="stylesheet" href="./style.css">
     <title>blindway-routeinfo</title>
 </head>
 <body>
+<div id="settingsPopup" class="settings-popup-container">
+    <button id="closeButton" class="close-button">X</button>
+    <!-- Add your settings content here -->
+    <div class="onoffswitch">
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0">
+        <label class="onoffswitch-label" for="myonoffswitch"></label>
+    </div>
+    <!-- Add more settings content as needed -->
+</div>
+<div class="top-bar">
+    <button class="top-bar-button" role="button" id="returnButton"></button>
+    <button class="top-bar-button" role="button" id="whereAmIButton">Where Am I?</button>
+    <button class="top-bar-button" role="button" id="settingsButton">Settings</button>
+</div>
+<div class="container" id="contentContainer">
 <div class="grid-container">
     <div class="timer-grid grid-item">
-        <div class="onoffswitch">
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0">
-            <label class="onoffswitch-label" for="myonoffswitch"></label>
-        </div>
+
         <div class="timer">
             <span class="minutes">07</span>:<span class="seconds">23</span>
         </div>
@@ -44,9 +57,9 @@
         <button type="button" class="select-btn next-btn" name="next">
             >>
         </button>
-<!--        <a href="../planner-page/planner.html">Go back to planner</a>-->
 
     </div>
+</div>
 </div>
 <script src="../topbar.js"></script>
 <script src="./script.js"></script>

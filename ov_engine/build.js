@@ -8,7 +8,7 @@ class Build {
         this.startTime = startTime;
         this.transferTime = transferTime;
 
-        console.log('build - this.startTime:', this.startTime); // Debugging statement
+        console.log('DEBUG: build - this.startTime:', this.startTime);
 
         // this.routeFound = [];
         // this.routeString = 'Vul alle velden in';
@@ -24,7 +24,7 @@ class Build {
     //build a route from start_station_name_journey > end_station_name_journey @ startTime from up to three train_tracks
     async buildRoute() {
         try {
-            console.log('Start of buildRoute'); // Add more log statements as needed
+            console.log('DEBUG: Start of buildRoute'); // Add more log statements as needed
             const search1 = new Search(this.start_station_name_journey, this.startTime);
             let search_array1 = await search1.fetchTrainTrackRows();
 
@@ -45,7 +45,7 @@ class Build {
                                 this.routeFound = [];
                                 this.routeFound.push(row, row2);
                             } else {
-                                console.error('in=build: no train_track found from second station within an hour');
+                                console.error('DEBUG: build: no train_track found from second station within an hour');
 
                                 //tree train_tracks deep
                                 const search3 = new Search(this.findNext_search_station(row2), await search2.fetchTimeOfArrival(this.transferTime, row2.track_id));
@@ -58,29 +58,29 @@ class Build {
                                             this.routeFound = [];
                                             this.routeFound.push(row, row2, row3);
                                         } else{
-                                            console.error('in=build: : no train_track found from third station within an hour\n' +
-                                                'cannot build a route from more than 3 separate train_tracks');
+                                            console.error('DEBUG: build: : no train_track found from third station within an hour\n' +
+                                                ' cannot build a route from more than 3 separate train_tracks');
                                         }
                                     }
                                 } else {
-                                    console.error('in=build: no train_track found from third station within an hour');
+                                    console.error('DEBUG: build: no train_track found from third station within an hour');
                                 }
                             }
                         }
                     } else {
-                        console.error('in=build: no train_track found from second station within an hour');
+                        console.error('DEBUG: build: no train_track found from second station within an hour');
                     }
                 }
             } else {
-                console.error('in=build: cannot find a route from given station at given time');
+                console.error('DEBUG: build: cannot find a route from given station at given time');
             }
 
             //DEBUG console.log(('in=build: number of rows in routeFound ' + this.routeFound.length));
             this.routeString = this.getRouteAsString(); //DEBUG
-            console.log('End of buildRoute'); // Add more log statements as needed
+            console.log('DEBUG: End of buildRoute'); // Add more log statements as needed
         } catch(error) {
-            console.error('in=build: cannot build route ', error);
-            this.routeString = 'in=build: Error building route: ' + error;
+            console.error('DEBUG: build: cannot build route ', error);
+            this.routeString = 'DEBUG: build: Error building route: ' + error;
         }
     }
     findNext_search_station(row) {

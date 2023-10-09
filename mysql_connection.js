@@ -24,8 +24,8 @@ class Mysql_connection {
                     return;
                 }
                 return resolve(results);
-                //console.log('mysql_connection - sql: ' + sql, ' params: ', params)
-                //console.log('mysql_connection - Query executed successfully. Results:', results);
+                //console.log('DEBUG: mysql_connection - query: sql ' + sql, ' params: ', params)
+                //console.log('DEBUG: mysql_connection - Query executed successfully. Results:', results);
             });
         });
     }

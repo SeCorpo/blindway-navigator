@@ -4,7 +4,7 @@ class Search {
     constructor(start_station_name, startTime) {
         this.start_station_name = start_station_name;
         this.startTime = startTime;
-        console.log('search - this.startTime:', this.startTime); // Debugging statement
+        console.log('DEBUG: search - this.startTime:', this.startTime); // Debugging statement
     }
 
     rows = [];
@@ -12,7 +12,7 @@ class Search {
     async fetchTrainTrackRows() {
         try {
 
-            console.log('search - From: [', this.start_station_name, '] startTimeString: ', this.startTime, ' endTimeString: ', this.getTimePlusOneHour());
+            console.log('DEBUG: search - From: [', this.start_station_name, '] startTimeString: ', this.startTime, ' endTimeString: ', this.getTimePlusOneHour());
 
             // Create a MySQL query to retrieve rows within the 1-hour time period
             // const query =
@@ -25,13 +25,13 @@ FROM train_tracks WHERE start_station_name = ? AND TIME(timeOfDeparture) >= ? AN
             this.rows = await db.query(query, [this.start_station_name, this.startTime, await this.getTimePlusOneHour()]);
 
             if(this.rows.length > 0) {
-                console.log('search - fetchTrainTrackRows: rows - ' + this.rows.length)
+                console.log('DEBUG: search - fetchTrainTrackRows: rows - ' + this.rows.length)
                 return this.rows;
             } else {
-                console.error('search - fetchTrainTrackRows: rows !> 0')
+                console.error('DEBUG: search - fetchTrainTrackRows: rows !> 0')
             }
         } catch(error) {
-            console.error('Error executing the query:', error);
+            console.error('DEBUG: Error executing the query:', error);
             throw error;
         }
     }
@@ -63,10 +63,10 @@ FROM train_tracks WHERE start_station_name = ? AND TIME(timeOfDeparture) >= ? AN
             if (result.length > 0) {
                 return result[0].time;
             } else {
-                throw new Error('No matching records found');
+                throw new Error('DEBUG: No matching records found');
             }
         } catch(error) {
-            console.log('search: cannot fetch timeOfArrival from row:');
+            console.log('DEBUG: search: cannot fetch timeOfArrival from row:');
             throw error;
         }
     }

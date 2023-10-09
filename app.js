@@ -7,7 +7,6 @@ require('dotenv').config();
 const cors = require('cors');
 
 var indexRouter = require('./routes/planner');
-var routeinfoRouter = require('./routes/routeinfo')
 var aboutRouter = require('./routes/about');
 
 var app = express();
@@ -24,7 +23,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use('/plan', indexRouter);
-app.use('/info', routeinfoRouter)
 app.use('/about', aboutRouter);
 
 // catch 404 and forward to error handler

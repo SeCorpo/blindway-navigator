@@ -1,30 +1,7 @@
 window.addEventListener('load', function() {
-    initialize()
-});
-
-
-let slideIndex = 0;
-const slides = document.getElementsByClassName("transfer-info");
-showSlides(slideIndex);
-
-const darkModeSwitch = document.getElementById("myonoffswitch")
-const previousButton = document.querySelector('.prev-btn');
-const playButton = document.querySelector('.play-btn');
-const nextButton = document.querySelector('.next-btn');
-const plannerPage = document.getElementById("plannerLink")
-
-//LISTENERS
-darkModeSwitch.addEventListener("change", darkMode);
-previousButton.addEventListener("click", handlePreviousButtonClick);
-playButton.addEventListener("click", handlePlayButtonClick);
-nextButton.addEventListener("click", handleNextButtonClick);
-
-const routeFoundData = sessionStorage.getItem('routeFoundData');
-
-
-function initialize() {
+    const returnButton = document.getElementById("returnButton");
+    returnButton.textContent = "Return";
     if (routeFoundData) {
-        // Parse the JSON data
         const routeFound = JSON.parse(routeFoundData);
 
         inputSlides(routeFound);
@@ -32,35 +9,46 @@ function initialize() {
         //sessionStorage.removeItem('routeFoundData');
     } else {
         console.error("No route found data available. Go back to last page");
-        // Handle the case where there is no routeFound data in localStorage
     }
-}
+});
+
+//ELEMENTS
+const slides = document.getElementsByClassName("transfer-info");
+let slideIndex = 0;
+
+const previousButton = document.querySelector('.prev-btn');
+const playButton = document.querySelector('.play-btn');
+const nextButton = document.querySelector('.next-btn');
+
+const routeFoundData = sessionStorage.getItem('routeFoundData');
 
 
-// Function to handle the "Previous" button click
-function handlePreviousButtonClick() {
+//EVENT LISTENERS
+returnButton.addEventListener("click", function() {
+    window.location.href = "../planner-page/planner.html";
+});
+previousButton.addEventListener("click", () => {
     console.log('handlePreviousButtonClick')
     showSlides(slideIndex - 1);
-}
-// Function to handle the "Next" button click
-function handleNextButtonClick() {
+});
+playButton.addEventListener("click", handlePlayButtonClick);
+nextButton.addEventListener("click", () => {
     console.log('handleNextButtonClick')
     showSlides(slideIndex + 1);
-}
+});
 
 
-// Function to handle the "Play" button click
 function handlePlayButtonClick() {
     //play audio
     //stop auto
     //start countdown timer till closest instap/uitstap
 }
 
+
 function showSlides(n) {
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
-
     if (n >= slides.length) {
         slideIndex = 0;
     } else if (n < 0) {
@@ -68,16 +56,7 @@ function showSlides(n) {
     } else {
         slideIndex = n;
     }
-
     slides[slideIndex].style.display = "block";
-}
-function darkMode() {
-    const body = document.body;
-    if (darkModeSwitch.checked) {
-        body.classList.add("dark-mode");
-    } else {
-        body.classList.remove("dark-mode");
-    }
 }
 function inputSlides(routeFound) {
     const container = document.querySelector('.info-grid');
@@ -125,3 +104,6 @@ function tableFormat(newDiv, row, i) {
 }
 
 //PLS MAKE NEW FUNCTION FOR OTHER TEXT OUTPUT
+
+
+
