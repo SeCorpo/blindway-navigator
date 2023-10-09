@@ -6,9 +6,10 @@ const toButtons = document.querySelectorAll(".tolocation");
 const timeInput = document.getElementById("timeInput");
 const nowButton = document.getElementById("nowButton");
 const slider = document.querySelector(".transfertime-slider");
-const valueDisplay = document.querySelector(".transfertime-value");
+const transferTimeValue = document.querySelector(".transfertime-value");
 
 const planButton = document.getElementById("planButton");
+const routeinfoPage = document.getElementById("routeInfoLink");
 
 darkModeSwitch.addEventListener("change", darkMode);
 fromButtons.forEach((button) => {
@@ -44,61 +45,36 @@ function getTime() {
         return `${hours}:${minutes}:${seconds}`;
 
     } else {
-
         return document.getElementById("timeInput").value + ':00';
-
     }
 }
-valueDisplay.textContent = slider.value;
+transferTimeValue.textContent = slider.value;
 slider.addEventListener("input", () => {
-    valueDisplay.textContent = slider.value;
+    transferTimeValue.textContent = slider.value;
 });
 // Add a click event listener to the button
 planButton.addEventListener("click", handlePlanButton);
 
+
 async function handlePlanButton() {
-    const selectedFromLocation = document.querySelector(".fromlocation.selected");
-    const selectedToLocation = document.querySelector(".tolocation.selected");
+    const selectedFromLocation = document.querySelector(".fromlocation.selected").innerText;
+    const selectedToLocation = document.querySelector(".tolocation.selected").innerText;
     const time = getTime();
     const transferTime = slider.value
 
-    if (selectedFromLocation && selectedToLocation && time && transferTime) {
+    if (selectedFromLocation !== null && selectedToLocation !== null && time && transferTime) {
         console.log("All necessary parameters are selected.");
 
-        try {
-            const response = await axios.get('http://localhost:3001/plan', {
-                params: {
-                    from: selectedFromLocation.innerText,
-                    to: selectedToLocation.innerText,
-                    time: time,
-                    transferTime: transferTime
-                }
-            });
+        await service(selectedFromLocation, selectedToLocation, time, transferTime)
 
-            const routeFound = response.data.routeFound;
-
-            if (routeFound) {
-                localStorage.setItem('routeFoundData', JSON.stringify(routeFound));
-
-                redirectToRouteInfoPage()
-            } else {
-                console.error("No route found.");
-                alert("No route found.");
-            }
-
-        } catch (error) {
-            console.error("API Request Error:", error);
-        }
     } else {
         console.log("Necessary parameters are not selected.");
         alert("Please select all necessary parameters.");
     }
 }
-function redirectToRouteInfoPage() {
-    window.location.href = '../routeinfo-page/routeinfo.html';
-}
+
 function darkMode() {
-    var body = document.body;
+    const body = document.body;
     if (darkModeSwitch.checked) {
         body.classList.add("dark-mode");
     } else {

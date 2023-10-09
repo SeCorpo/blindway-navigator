@@ -38,5 +38,6 @@ function speak() {
 }
 
 playButton.onclick = function () {
+  console.log('onPlayButton')
   speak();
 }

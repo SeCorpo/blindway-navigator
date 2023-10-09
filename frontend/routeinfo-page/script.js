@@ -11,7 +11,7 @@ const darkModeSwitch = document.getElementById("myonoffswitch")
 const previousButton = document.querySelector('.prev-btn');
 const playButton = document.querySelector('.play-btn');
 const nextButton = document.querySelector('.next-btn');
-
+const plannerPage = document.getElementById("plannerLink")
 
 //LISTENERS
 darkModeSwitch.addEventListener("change", darkMode);
@@ -19,7 +19,7 @@ previousButton.addEventListener("click", handlePreviousButtonClick);
 playButton.addEventListener("click", handlePlayButtonClick);
 nextButton.addEventListener("click", handleNextButtonClick);
 
-const routeFoundData = localStorage.getItem('routeFoundData');
+const routeFoundData = sessionStorage.getItem('routeFoundData');
 
 
 function initialize() {
@@ -29,7 +29,7 @@ function initialize() {
 
         inputSlides(routeFound);
         showSlides(0)
-        //localStorage.removeItem('routeFoundData');
+        //sessionStorage.removeItem('routeFoundData');
     } else {
         console.error("No route found data available. Go back to last page");
         // Handle the case where there is no routeFound data in localStorage
@@ -57,12 +57,10 @@ function handlePlayButtonClick() {
 }
 
 function showSlides(n) {
-    // Hide all slides
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
 
-    // Wrap around to the last slide if moving past the last slide
     if (n >= slides.length) {
         slideIndex = 0;
     } else if (n < 0) {
@@ -71,10 +69,16 @@ function showSlides(n) {
         slideIndex = n;
     }
 
-    // Display the current slide
     slides[slideIndex].style.display = "block";
 }
-
+function darkMode() {
+    const body = document.body;
+    if (darkModeSwitch.checked) {
+        body.classList.add("dark-mode");
+    } else {
+        body.classList.remove("dark-mode");
+    }
+}
 function inputSlides(routeFound) {
     const container = document.querySelector('.info-grid');
 
@@ -85,19 +89,12 @@ function inputSlides(routeFound) {
         const newDiv = document.createElement('div');
         newDiv.className = 'transfer-info fade';
 
-        standardText(newDiv, row, i); // Pass newDiv, row, and i to standardText
+        tableFormat(newDiv, row, i); // Pass newDiv, row, and i to standardText
 
         container.appendChild(newDiv);
     }
 }
-function darkMode() {
-    var body = document.body;
-    if (darkModeSwitch.checked) {
-        body.classList.add("dark-mode");
-    } else {
-        body.classList.remove("dark-mode");
-    }
-}
+
 function standardText(newDiv, row, i) {
     newDiv.innerHTML =
         '<hr>' +
@@ -112,4 +109,19 @@ function standardText(newDiv, row, i) {
         '<p>Uitstapzijde: ' + row.exitSide + '</p>' +
         '<hr>';
 }
+function tableFormat(newDiv, row, i) {
+    newDiv.innerHTML =
+        '<table style="text-align: left;">' +
+        '<tr><th colspan="2">Track ' + (i + 1) + '</th></tr>' +
+        '<tr><td>Beginstation:</td><td>' + row.start_station_name + '</td></tr>' +
+        '<tr><td>Eindstation:</td><td>' + row.end_station_name + '</td></tr>' +
+        '<tr><td>Vertrektijd:</td><td>' + row.timeOfDeparture + '</td></tr>' +
+        '<tr><td>Aankomsttijd:</td><td>' + row.timeOfArrival + '</td></tr>' +
+        '<tr><td>Vertrek perron:</td><td>' + row.departurePlatform + '</td></tr>' +
+        '<tr><td>Aankomst perron:</td><td>' + row.arrivalPlatform + '</td></tr>' +
+        '<tr><td>Trein type:</td><td>' + row.train_type + '</td></tr>' +
+        '<tr><td>Uitstapzijde:</td><td>' + row.exitSide + '</td></tr>' +
+        '</table>';
+}
+
 //PLS MAKE NEW FUNCTION FOR OTHER TEXT OUTPUT

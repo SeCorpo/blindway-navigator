@@ -2,7 +2,30 @@
 body, html {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
+.top-bar {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    height: 30px; /* Adjust the height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.container {
+    height: calc(100% - 30px); /* Adjust for top bar height */
+    display: flex;
+    flex-direction: column;
+}
+
+#contentContainer {
+    flex: 1;
+    overflow: auto; /* Add scrollbar if content overflows */
+}
+
 
 .dark-mode {
     .grid-item {

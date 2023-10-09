@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
   <title>blindway</title>
 </head>
 <body>
+<div class="top-bar">
+  <button class="top-bar-button" id="returnButton">Return</button>
+  <button class="top-bar-button" id="whereAmIButton">Where Am I?</button>
+  <button class="top-bar-button" id="settingsButton">...</button>
+</div>
+<div class="container" id="contentContainer">
 <div class="grid-container">
   <div class="grid-item">
     <div class="onoffswitch">
@@ -48,7 +54,7 @@
       </div>
     </div>
     <div class="transfertime-slider-container">
-      <input type="range" class="transfertime-slider" name="transfertime" value="20" min="0" max="60"/>
+      <input type="range" class="transfertime-slider" name="transfertime" value="10" min="0" max="30"/>
       <span class="transfertime-value">20</span>
     </div>
   </div>
@@ -57,7 +63,9 @@
     <a href="../routeinfo-page/routeinfo.html">Go to route information page</a>
   </div>
 </div>
+</div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="script.js"></script>
+<script src="./script.js"></script>
+<script src="./js/service.js"></script>
 </body>
 </html>
