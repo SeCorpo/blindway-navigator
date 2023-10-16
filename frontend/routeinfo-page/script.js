@@ -1,8 +1,11 @@
 window.addEventListener('load', function() {
     const returnButton = document.getElementById("returnButton");
     returnButton.textContent = "Return";
+
     if (routeFoundData) {
         const routeFound = JSON.parse(routeFoundData);
+
+        const routeSteps = new RouteSteps(routeFound);
 
         inputSlides(routeFound);
         showSlides(0)
