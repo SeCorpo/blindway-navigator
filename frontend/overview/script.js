@@ -6,7 +6,8 @@ window.addEventListener('load', function() {
         const routeFound = JSON.parse(routeFoundData);
         const routeSteps = new RouteSteps(routeFound);
 
-        inputSlides(routeSteps);
+        inputSlides(routeFound)
+        //inputSlides(routeSteps);
         showSlides(0)
         //sessionStorage.removeItem('routeFoundData');
     } else {
@@ -26,7 +27,7 @@ const routeFoundData = sessionStorage.getItem('routeFoundData');
 
 //EVENT LISTENERS
 returnButton.addEventListener("click", function() {
-    window.location.href = "../planner-page/planner.html";
+    window.location.href = "../planner/planner.html";
 });
 previousButton.addEventListener("click", () => {
     console.log('handlePreviousButtonClick')
@@ -69,8 +70,8 @@ function inputSlides(array) {
         const newDiv = document.createElement('div');
         newDiv.className = 'transfer-info fade';
 
-        // tableFormat(newDiv, row, i); // Pass newDiv, row, and i to standardText
-        setInnerHTMLText(newDiv, row, i)
+        tableFormatRouteFoundData(newDiv, row, i);
+        //setInnerHTMLText(newDiv, row, i)
         container.appendChild(newDiv);
     }
 }

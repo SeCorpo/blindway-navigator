@@ -18,7 +18,7 @@ const planButton = document.getElementById("planButton");
 
 //EVENT LISTENERS
 returnButton.addEventListener("click", function() {
-    window.location.href = "../routeinfo-page/routeinfo.html";
+    window.location.href = "../overview/overview.html";
 });
 fromButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -53,7 +53,7 @@ async function handlePlanButton() {
     if (selectedFromLocation !== null && selectedToLocation !== null && time && transferTime) {
         console.log("All necessary parameters are selected.");
         await service(selectedFromLocation, selectedToLocation, time, transferTime)
-        window.location.href = "../routeinfo-page/routeinfo.html";
+        window.location.href = "../overview/overview.html";
     } else {
         console.log("Necessary parameters are not selected.");
         alert("Please select all necessary parameters.");

@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../blindway.css">
+    <link rel="stylesheet" href="../theme.css">
     <link rel="stylesheet" href="./style.css">
     <title>blindway-routeinfo</title>
 </head>
 <body>
-<object data="../settings.html" id="settingsObject" style="display: none;"></object>
-<div class="top-bar">
-    <button class="top-bar-button" role="button" id="returnButton"></button>
-    <button class="top-bar-button" role="button" id="whereAmIButton">Where Am I?</button>
-    <button class="top-bar-button" role="button" id="settingsButton">Settings</button>
-</div>
-<div class="container" id="contentContainer">
+
+    <header class="header">
+        <nav class="navbar">
+            <button class="nav-button" role="button" id="returnButton" onclick="window.location.href='../planner/planner.html'">Planner</button>
+            <button class="nav-button" role="button" id="whereAmIButton" onclick="window.location.href='../detail/detail.html'">Where Am I?</button>
+            <button class="nav-button" role="button" id="settingsButton" onclick="window.location.href='../settings/settings.html'">Settings</button>
+        </nav>
+    </header>
+
+<main class="main container" id="contentContainer">
 <div class="grid-container">
     <div class="timer-grid grid-item">
 
@@ -52,7 +55,7 @@
 
     </div>
 </div>
-</div>
+</main>
 <script src="../topbar.js"></script>
 <script src="./script.js"></script>
 <script src="./js/routeSteps.js"></script>
