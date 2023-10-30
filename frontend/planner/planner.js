@@ -1,8 +1,3 @@
-window.addEventListener('load', function() {
-    const returnButton = document.getElementById("returnButton");
-    returnButton.textContent = "Route info";
-});
-
 //ELEMENTS
 const fromButtons = document.querySelectorAll(".fromlocation");
 const toButtons = document.querySelectorAll(".tolocation");
@@ -17,9 +12,6 @@ const planButton = document.getElementById("planButton");
 
 
 //EVENT LISTENERS
-returnButton.addEventListener("click", function() {
-    window.location.href = "../overview/overview.html";
-});
 fromButtons.forEach((button) => {
     button.addEventListener("click", () => {
         fromButtons.forEach((btn) => {

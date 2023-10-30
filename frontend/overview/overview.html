@@ -4,45 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../theme.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./overview.css">
     <title>blindway-routeinfo</title>
 </head>
 <body>
 
     <header class="header">
         <nav class="navbar">
-            <button class="nav-button" role="button" id="returnButton" onclick="window.location.href='../planner/planner.html'">Planner</button>
+            <button class="nav-button" role="button" id="plannerButton" onclick="window.location.href='../planner/planner.html'">Planner</button>
             <button class="nav-button" role="button" id="whereAmIButton" onclick="window.location.href='../detail/detail.html'">Where Am I?</button>
             <button class="nav-button" role="button" id="settingsButton" onclick="window.location.href='../settings/settings.html'">Settings</button>
         </nav>
     </header>
 
-<main class="main container" id="contentContainer">
-<div class="grid-container">
-    <div class="timer-grid grid-item">
-
-        <div class="timer">
-            <span class="minutes">07</span>:<span class="seconds">23</span>
-        </div>
-
-    </div>
-    <div class="info-grid grid-item">
-
-        <div class="transfer-info fade">
-            transfer-info1
-        </div>
-
-        <div class="transfer-info fade">
-            transfer-info2
-        </div>
-
-        <div class="transfer-info fade">
-            transfer-info3
-        </div>
+<main class="main container">
+    <div class="top-container container-item">
 
     </div>
 
-    <div class="buttons-grid grid-item">
+    <div class="middle-container container-item">
+        <div class="transfer-info fade">
+            Please plan a route, return to Planner1
+        </div>
+        <div class="transfer-info fade">
+            Please plan a route, return to Planner2
+        </div>
+        <div class="transfer-info fade">
+            Please plan a route, return to Planner3
+        </div>
+    </div>
+
+    <div class="bottom-container container-item">
         <button type="button" class="select-btn prev-btn" name="previous">
             <<
         </button>
@@ -52,13 +44,10 @@
         <button type="button" class="select-btn next-btn" name="next">
             >>
         </button>
-
     </div>
-</div>
 </main>
-<script src="../topbar.js"></script>
-<script src="./script.js"></script>
-<script src="./js/routeSteps.js"></script>
+<script src="./overview.js"></script>
+<script src="../detail/js/routeSteps.js"></script>
 <script src="./js/tts.js"></script>
 </body>
 </html>

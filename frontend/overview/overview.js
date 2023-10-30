@@ -1,7 +1,4 @@
 window.addEventListener('load', function() {
-    const returnButton = document.getElementById("returnButton");
-    returnButton.textContent = "Return";
-
     if (routeFoundData) {
         const routeFound = JSON.parse(routeFoundData);
         const routeSteps = new RouteSteps(routeFound);
@@ -12,6 +9,7 @@ window.addEventListener('load', function() {
         //sessionStorage.removeItem('routeFoundData');
     } else {
         console.error("No route found data available. Go back to last page");
+        showSlides(0)
     }
 });
 
@@ -26,9 +24,6 @@ const nextButton = document.querySelector('.next-btn');
 const routeFoundData = sessionStorage.getItem('routeFoundData');
 
 //EVENT LISTENERS
-returnButton.addEventListener("click", function() {
-    window.location.href = "../planner/planner.html";
-});
 previousButton.addEventListener("click", () => {
     console.log('handlePreviousButtonClick')
     showSlides(slideIndex - 1);
@@ -61,7 +56,7 @@ function showSlides(n) {
     slides[slideIndex].style.display = "block";
 }
 function inputSlides(array) {
-    const container = document.querySelector('.info-grid');
+    const container = document.querySelector('.middle-container');
 
     container.textContent = '';
 
@@ -104,11 +99,7 @@ function tableFormatRouteFoundData(newDiv, row, i) {
         '<tr><td>Uitstapzijde:</td><td>' + row.exitSide + '</td></tr>' +
         '</table>';
 }
-function setInnerHTMLText(newDiv, string, i) {
-    newDiv.innerHTML = 'Stap ' + i + ' - ' + string;
-    newDiv.style.fontSize = '26px';
-    newDiv.style.textAlign = 'center';
-}
+
 
 //PLS MAKE NEW FUNCTION FOR OTHER TEXT OUTPUT
 

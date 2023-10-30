@@ -2,9 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="./detail.css">
+    <title>detail</title>
 </head>
 <body>
+<header class="header">
+    <nav class="navbar">
+        <button class="nav-button" role="button" id="overviewButton" onclick="window.location.href='../overview/overview.html'">Overview</button>
+        <button class="nav-button" role="button" id="plannerButton" onclick="window.location.href='../planner/planner.html'">Planner</button>
+        <button class="nav-button" role="button" id="settingsButton" onclick="window.location.href='../settings/settings.html'">Settings</button>
+    </nav>
+</header>
+
+<main class="main container">
+    <div class="top-container container-item">
+        Timer till next deadline
+        <div class="timer">
+            <span class="minutes">07</span>:<span class="seconds">23</span>
+        </div>
+    </div>
+    <div class="string-container container-item">
+        string
+    </div>
+    <div class="feature-container container-item">
+        feature
+    </div>
+    <div class="bottom-container container-item">
+        <button type="button" class="select-btn prev-btn" name="previous">
+            <<
+        </button>
+        <button type="button" class="play-btn" name="play">
+            PLAY
+        </button>
+        <button type="button" class="select-btn next-btn" name="next">
+            >>
+        </button>
+    </div>
+</main>
 
 </body>
 </html>

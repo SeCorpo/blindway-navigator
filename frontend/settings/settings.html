@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="./settings.css">
+    <title>settings</title>
 </head>
 <body>
+<header class="header">
+    <nav class="navbar">
+        <button class="nav-button" role="button" id="returnButton" onclick="window.location.href='../overview/overview.html'">Overview</button>
+        <button class="nav-button" role="button" id="whereAmIButton" onclick="window.location.href='../detail/detail.html'">Where Am I?</button>
+        <button class="nav-button" role="button" id="plannerButton" onclick="window.location.href='../planner/planner.html'">Planner</button>
+    </nav>
+</header>
+
+<main class="main container">
+    <div class="top-container container-item">
+        <div class="onoffswitch">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" checked>
+            <label class="onoffswitch-label" for="myonoffswitch"></label>
+        </div>
+
+    </div>
+</main>
 
 </body>
 </html>

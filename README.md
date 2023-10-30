@@ -52,7 +52,7 @@ Zie: [W3 JavaScript Style Guide](https://www.w3schools.com/js/js_conventions.asp
     frontend/page-map ->
     ./js - separate functions
     index.html
-    script.js - all html handlings
+    planner.js - all html handlings
     style.css
 
 ## Setup .env file:
