@@ -10,7 +10,7 @@ class Build {
 
         console.log('DEBUG: build - this.startTime:', this.startTime);
 
-        // this.routeFound = [];
+        this.routeFound = [];
         // this.routeString = 'Vul alle velden in';
 
         this.routeFoundPromise = this.buildRoute()

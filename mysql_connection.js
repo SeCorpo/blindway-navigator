@@ -19,13 +19,11 @@ class Mysql_connection {
         return new Promise((resolve, reject) => {
             this.pool.query(sql, params, (err, results) => {
                 if (err) {
-                    reject(err);
                     console.error('Error executing SQL query:', err);
-                    return;
+                    reject(err); // Handle the error and reject the promise
+                } else {
+                    resolve(results); // Resolve the promise with the query results
                 }
-                return resolve(results);
-                //console.log('DEBUG: mysql_connection - query: sql ' + sql, ' params: ', params)
-                //console.log('DEBUG: mysql_connection - Query executed successfully. Results:', results);
             });
         });
     }
