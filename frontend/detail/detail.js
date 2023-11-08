@@ -1,6 +1,7 @@
 const routeFoundData = sessionStorage.getItem('routeFoundData');
 
 window.addEventListener('load', function() {
+
     if (routeFoundData) {
         const routeFound = JSON.parse(routeFoundData);
         const routeSteps = new RouteSteps(routeFound);

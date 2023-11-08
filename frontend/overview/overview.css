@@ -1,18 +1,3 @@
-.dark-mode {
-    .container-item {
-        background-color: #34495e;}
-    .main {
-        background-color: #545454;}
-    .transfer-info {
-        background-color: #4974a5;
-        color: #fffff0;}
-    .select-btn {
-        background-color: #ffef00;}
-    .play-btn {
-        background-color: #ffef00;}
-    .play-btn:active {
-        background-color: #9141ac;}
-}
 
 .main {
     display: grid;
