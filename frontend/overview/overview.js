@@ -1,10 +1,8 @@
 window.addEventListener('load', function() {
     if (routeFoundData) {
         const routeFound = JSON.parse(routeFoundData);
-        const routeSteps = new RouteSteps(routeFound);
 
         inputSlides(routeFound)
-        //inputSlides(routeSteps);
         showSlides(0)
         //sessionStorage.removeItem('routeFoundData');
     } else {
