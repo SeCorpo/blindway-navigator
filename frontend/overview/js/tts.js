@@ -1,8 +1,8 @@
 var synth = window.speechSynthesis;
 
-// slides = div.transfer-info   || script.js
-// slideIndex = current slide   || script.js
-// playButton = button.play-btn || script.js
+// slides = div.transfer-info   || planner.js
+// slideIndex = current slide   || planner.js
+// playButton = button.play-btn || planner.js
 
 const pitch = 1;
 const rate = 1;

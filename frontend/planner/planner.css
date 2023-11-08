@@ -1,0 +1,171 @@
+.dark-mode {
+    .container-item {
+        background-color: #34495e;}
+    .transfertime-value {
+        color: #FFFFFF;}
+    .main {
+        background-color: #545454;}
+    }
+
+.main {
+    display: grid;
+    grid-template-rows: 2fr 1fr auto;
+}
+.top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.location-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.locationbtn {
+    width: 400px;
+    height: 100px;
+    border: 1px solid #444444;
+    padding: 3px;
+    margin: 10px;
+    font-size: 46px;
+    font-weight: normal;
+    font-style: normal;
+    color: #222222;
+    background-color: #FFCC00FF;
+    cursor: pointer;
+}
+
+.fromlocation:active {
+    background-color: #007AFFFF;
+}
+.tolocation:active {
+    background-color: #33d17a;
+}
+.fromlocation.selected {
+    background-color: #62a0ea;
+}
+.tolocation.selected {
+    background-color: #57e389;
+}
+.clock-and-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.clock {
+    width: 300px;
+    height: 50px;
+    border: 1px solid #444444;
+    padding: 3px;
+    font-size: 30px;
+    font-weight: normal;
+    font-style: normal;
+    color: #222222;
+    background-color: #FFCC00FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.clock input[type="time"] {
+    width: auto;
+    height: 100%;
+    border: none;
+    background: none;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    color: inherit;
+    outline: none;
+}
+
+.now-button button {
+    width: 100px;
+    height: 50px;
+    border: 1px solid #444444;
+    padding: 3px;
+    font-size: 30px;
+    font-weight: normal;
+    font-style: normal;
+    color: #222222;
+    background-color: #FFCC00FF;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-left: 10px;
+}
+
+
+.now-button button:active {
+    background-color: #33d17a;
+}
+
+.now-button button.selected {
+    background-color: #57e389;
+}
+
+
+.transfertime-slider-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.transfertime-slider {
+    width: 70%;
+    height: 10px;
+    border: none;
+    margin: 0 auto;
+    background-color: #ccc;
+    outline: none;
+    -moz-appearance: none;
+}
+.transfertime-slider::-webkit-slider-thumb,
+.transfertime-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background-color: #c061cb;
+    border: 2px solid #444444;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.transfertime-slider:hover::-webkit-slider-thumb,
+.transfertime-slider:hover::-moz-range-thumb {
+    background-color: #9141ac;
+}
+
+.transfertime-value {
+    width: 20px;
+    text-align: center;
+    font-size: 25px;
+    color: #444444;
+    margin-left: 10px;
+}
+
+
+.plan-btn {
+    width: 400px;
+    height: 100px;
+    border: 1px solid #444444;
+    padding: 3px;
+    margin: 0 auto;
+    font-size: 30px;
+    font-weight: normal;
+    font-style: normal;
+    color: #222222;
+    background-color: #FFCC00FF;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+.plan-btn:active {
+    background-color: #1a5fb4;
+}
+.plan-btn.selected {
+    background-color: #1c71d8;
+}

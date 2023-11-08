@@ -1,0 +1,53 @@
+.dark-mode {
+    .container-item {
+        background-color: #34495e;}
+    .main {
+        background-color: #545454;}
+    .transfer-info {
+        background-color: #4974a5;
+        color: #fffff0;}
+    .select-btn {
+        background-color: #ffef00;}
+    .play-btn {
+        background-color: #ffef00;}
+    .play-btn:active {
+        background-color: #9141ac;}
+}
+
+.main {
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+}
+
+.top-container {
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middle-container {
+    grid-row: 2;
+}
+.transfer-info {
+    display: none;
+    background-color: #d6eaf8;
+    color: #000000;
+}
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+@keyframes fade {
+    from {opacity: 0.4}
+    to {opacity: 1}
+}
+
+
+.bottom-container {
+    grid-row: 3;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
