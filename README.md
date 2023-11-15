@@ -74,3 +74,5 @@ Zie: [W3 JavaScript Style Guide](https://www.w3schools.com/js/js_conventions.asp
     7. select database "USE trajects;"
     8. set source of database to project file "source /project/sql/trajects.sql right click, copy path > absolut;"
 
+## TIPS
+Connection fixed with replacing '.env: DB_HOST=localhost' to 'DB_HOST=127.0.0.1'
